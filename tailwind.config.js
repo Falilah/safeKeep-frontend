@@ -5,10 +5,9 @@ const { violet, blackA, mauve, green, indigo, purple } = require('@radix-ui/colo
 
 module.exports = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx}',
+    'src/pages/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
-    './app/**/*.{js,ts,jsx,tsx,json}',
-    './src/Layout/**/*.{js,ts,jsx,tsx}',
+    './src/layout/**/*.{js,ts,jsx,tsx}',
     './src/views/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
