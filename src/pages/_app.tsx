@@ -40,9 +40,7 @@ function MyApp({ Component, pageProps }: ComponentWithPageLayout) {
                   <Component {...pageProps} />
                 </Component.PageLayout>
               ) : (
-                <Layout>
-                  <Component {...pageProps} />
-                </Layout>
+                <Component {...pageProps} />
               )}
             </ConnectKitProvider>
           </SIWEProvider>
