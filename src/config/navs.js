@@ -51,12 +51,12 @@ const navs = [
     icon: HomeGrid,
     href: "/dashboard/vault"
   },
-  {
-    id: 2,
-    title: "Multi Sig",
-    icon: Lock,
-    href: "/dashboard/multi-sig"
-  },
+  // {
+  //   id: 2,
+  //   title: "Multi Sig",
+  //   icon: Lock,
+  //   href: "/dashboard/multi-sig"
+  // },
   {
     id: 3,
     title: "Inheritors",
