@@ -1,5 +1,6 @@
 import verifyToken from '@server/lib/verifyToken';
 import axios from 'axios';
+import Router from 'next/router';
 import { store } from 'store';
 import { login, logout } from 'store/auth';
 import { SiweMessage } from 'siwe';

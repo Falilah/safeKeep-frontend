@@ -1,0 +1,461 @@
+[
+    {
+      "inputs": [],
+      "name": "ActiveInheritor",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "AmountMismatch",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "Claimed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "EmptyArray",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "overflow",
+          "type": "uint256"
+        }
+      ],
+      "name": "EtherAllocationOverflow",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "HasExpired",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InactiveInheritor",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InsufficientEth",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "LengthMismatch",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NoPermissions",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotBackupAddress",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotExpired",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotInheritor",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotVaultOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "overflow",
+          "type": "uint256"
+        }
+      ],
+      "name": "TokenAllocationOverflow",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_vaultID",
+          "type": "uint256"
+        }
+      ],
+      "name": "EthDeposited",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "_newInheritors",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "_weiShare",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "addInheritors",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "allEtherAllocations",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "inheritor",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "weiAlloc",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct VaultFacet.AllInheritorEtherAllocs[]",
+          "name": "eAllocs",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address[]",
+          "name": "_inheritors",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "_tokenIDs",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "_amounts",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "allocateERC1155Tokens",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address[]",
+          "name": "_inheritors",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "_shares",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "allocateERC20Tokens",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address[]",
+          "name": "_inheritors",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "_tokenIDs",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "allocateERC721Tokens",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "_inheritors",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "_ethShares",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "allocateEther",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "claimAllAllocations",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newBackupAddress",
+          "type": "address"
+        }
+      ],
+      "name": "claimOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "depositEther",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "etherBalance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAllocatedEther",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getUnallocatedEther",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "unallocated_",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_inheritor",
+          "type": "address"
+        }
+      ],
+      "name": "inheritorEtherAllocation",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_allocatedEther",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "inspectVault",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "weiBalance",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "lastPing",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "backup",
+              "type": "address"
+            },
+            {
+              "internalType": "address[]",
+              "name": "inheritors",
+              "type": "address[]"
+            }
+          ],
+          "internalType": "struct VaultFacet.VaultInfo",
+          "name": "info",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ping",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "_inheritors",
+          "type": "address[]"
+        }
+      ],
+      "name": "removeInheritors",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newBackupAddress",
+          "type": "address"
+        }
+      ],
+      "name": "transferBackup",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newVaultOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "vaultOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        }
+      ],
+      "name": "withdrawEther",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]

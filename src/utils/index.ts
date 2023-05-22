@@ -1,3 +1,4 @@
+
 export function truncateWalletAddress(address, numChars = 5) {
   if (!address?.length) {
     return 'Connect wallet';
@@ -8,3 +9,6 @@ export function truncateWalletAddress(address, numChars = 5) {
     return address.slice(0, numChars) + '...' + address.slice(-numChars);
   }
 }
+
+
+

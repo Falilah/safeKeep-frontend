@@ -6,15 +6,37 @@ import FormThree from './formThree';
 import VaultCreatedForm from './vaultCreatedForm';
 import LoadingModal from './loadingModal';
 import { useCreateVaultMutation } from '@services/api';
-import { nanoid } from 'nanoid';
+import { useCreateVault } from './hooks/useCreateVault';
+import customToast from '@utils/customToast';
+import mined from '@components/toast';
 
 interface FormProps {
   setCreateVault: Dispatch<SetStateAction<boolean>>;
 }
 
+const sampleInh = ['0x00Bd2208E8eAA79e1771bd1EAF0b7c0469deF169'];
+const sampleWei = ['20000000000'];
+const sampleBack = '0x590dfed9e8c54c48bcbf006645380fe76b00b608';
+const sampleE = '1000000000000000000';
+const sampleData = [sampleInh, sampleWei, sampleE, sampleBack];
+
+interface IFormData {
+  vaultName?: string;
+  backupAddress?: string;
+  backupName?: string;
+  _startingBal?: string;
+}
 const Form = ({ setCreateVault }: FormProps) => {
   const [step, setStep] = useState('step-one');
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState<IFormData>({});
+  const [vaultCreatedAdd, setCreateAdd] = useState('');
+  const {
+    callData,
+    loading: vaultCreateLoading,
+    setLoading: vaultSetLoading,
+    isError: valutCreateError,
+    isPending,
+  } = useCreateVault();
   const [createVaultMut, { ...actionStatus }] = useCreateVaultMutation();
   const vaultLoading = actionStatus?.isLoading;
   const vaultCreated = actionStatus?.isSuccess;
@@ -29,10 +51,20 @@ const Form = ({ setCreateVault }: FormProps) => {
       setStep('step-three');
       return;
     }
-    // setStep("step-final");
 
+    const inputData = {
+      value: formData._startingBal,
+      data: [new Array(), new Array(), String(+formData._startingBal * 1e18), formData?.backupAddress],
+    };
     try {
-      await createVaultMut({ ...formData, vaultAddress: '0xsampleVault ' + nanoid(3) });
+      const vaultAddress = await callData(inputData);
+
+      if (vaultAddress) {
+        setCreateAdd(vaultAddress);
+        await createVaultMut({ ...formData, vaultAddress });
+      }
+
+      // console.log(vaultAddress, 'Response');
     } catch (e) {
       console.log(e, 'Error');
     }
@@ -54,6 +86,7 @@ const Form = ({ setCreateVault }: FormProps) => {
               </span>
             </button>
           </div>
+
           {step === 'step-one' && (
             <FormProvider onSubmit={handleSubmit}>
               <FormOne setCreateVault={setCreateVault} />
@@ -71,8 +104,17 @@ const Form = ({ setCreateVault }: FormProps) => {
           )}
         </>
       )}
-      {vaultLoading && !vaultCreated && <LoadingModal />}
-      {vaultCreated && <VaultCreatedForm />}
+      {vaultCreateLoading && !isPending && (
+        <LoadingModal header="Waiting approval" message="please confirm the transaction on your connected wallet" />
+      )}
+
+      {vaultLoading && !vaultCreated && (
+        <LoadingModal header="Saving Meta Data" message="Saving Your Vault Meta Data" />
+      )}
+
+      {isPending && <LoadingModal header="Processing " message="Processing Your Transaction, Please await!" />}
+
+      {vaultCreated && <VaultCreatedForm address={vaultCreatedAdd} />}
     </div>
   );
 };

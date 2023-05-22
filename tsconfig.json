@@ -30,7 +30,8 @@
       "@config/*": ["config/*"],
       "@server/*": ["server/*"],
       "@lib/*": ["lib/*"],
-      "@hooks/*": ["src/hooks/*"]
+      "@hooks/*": ["src/hooks/*"],
+      "@abi/*": ["src/abi/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

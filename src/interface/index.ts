@@ -3,6 +3,30 @@ export interface IChild {
   children: React.ReactNode;
 }
 
+const input = {
+  _func: 'counter()',
+  returnArr: ['uint256'],
+  value: [],
+  typeArr: [],
+};
+
+export interface IContractInput {
+  _func: string;
+  returnArr?: string[];
+  typeArr: string[];
+  valueArr: Array<any>;
+}
+// address[] calldata _inheritors,
+// uint256[] calldata _weiShare,
+// uint256 _startingBal,
+// address _backupAddress
+type EthereumAddress = string & { __brand: 'ethereumAddress' };
+export interface IContractCreateVault {
+  _inheritors: [EthereumAddress];
+  _weiShare: [string];
+  _startingBal: number;
+  _backupAddress: EthereumAddress;
+}
 export interface IToken {
   address: string;
   iat: number;
@@ -31,10 +55,9 @@ export interface ISlide {
 
 export interface ICreateInhFormData {
   address: string[];
-  amount:string [];
+  amount: string[];
   name?: string[];
-  email:string[]
-  
+  email: string[];
 }
 
 export interface FormStepProps {
