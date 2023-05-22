@@ -20,7 +20,7 @@ export const getFormDetails = (e) => {
     const strippedKey = key.split('-').slice(0, -1).join('-');
     const pos = +key.split('-').pop();
     const whereToPush = dec[strippedKey];
-    // if (Number.isNaN(pos)) return;
+
     if (whereToPush) {
       whereToPush[pos] = e[key];
     }

@@ -30,7 +30,7 @@ const Error = ({ retry, error = 'Error Occurred' }) => {
 
 const AllInheritors = ({ setToggleModal }) => {
   const { data, isLoading, isError, isSuccess, refetch, error, isFetching } = useGetInheritorsQuery(0);
-  console.log(isLoading, isFetching, error, isError, data, 'data');
+  // console.log(isLoading, isFetching, error, isError, data, 'data');
 
   if (isLoading) return <Loader />;
   if (isError) return <Error error={'error'} retry={() => {}} />;

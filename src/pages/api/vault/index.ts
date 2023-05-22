@@ -85,7 +85,7 @@ router.get(async (req, res) => {
       status: false,
     });
   }
-  console.log(token, 'token~!!!');
+  // console.log(token, 'token~!!!');
   try {
     const vaults = await vaultDb.find({ owner: token.address });
     return res.status(200).json({
