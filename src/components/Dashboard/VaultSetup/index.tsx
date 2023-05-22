@@ -7,11 +7,9 @@ import { useGetVaultsQuery } from '@services/api';
 const VaultSetUp = () => {
   const [createVault, setCreateVault] = useState(false);
   const { data } = useGetVaultsQuery(0);
-  console.log(data, 'vaults data');
 
   return (
     <>
-      <div>Vaults</div>
       {createVault ? (
         <>
           <Form setCreateVault={setCreateVault} />
@@ -73,7 +71,7 @@ const VaultSetUp = () => {
               Your safevault is fast, safest, most secure crypto vault to explore web3 without the risks it posses!.
             </p>
             <div className="pt-6 lg:pt-16 flex flex-col lg:flex-row justify-between gap-4 w-full">
-              <div className="w-full lg:max-w-[50%]">
+              {/* <div className="w-full lg:max-w-[50%]">
                 <div className="relative flex flex-col justify-between bg-safekeep-green-100 w-full h-[215px] lg:h-[336px] py-6 px-8 rounded-lg">
                   <div className="h-10 w-10 lg:h-[60px] lg:w-[60px] bg-[#FEFFFF] rounded-lg flex items-center justify-center">
                     <p>hi</p>
@@ -93,8 +91,8 @@ const VaultSetUp = () => {
                 <button className="hidden lg:block font-paralucentMedium rounded-lg mt-10 text-sm leading-[14px] w-full py-4 border border-solid border-[#01A0FF] text-[#01A0FF]">
                   Import Existing Vault
                 </button>
-              </div>
-              <div className="w-full lg:max-w-[50%]">
+              </div> */}
+              <div className="w-full lg:max-w-[50%] mx-auto">
                 <div className="relative flex flex-col justify-between bg-safekeep-blue-100 w-full h-[215px] lg:h-[336px] py-6 px-8 rounded-lg">
                   <div className="h-10 w-10 lg:h-[60px] lg:w-[60px] bg-[#FEFFFF] rounded-lg flex items-center justify-center">
                     <p>hi</p>

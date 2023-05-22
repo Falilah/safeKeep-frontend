@@ -19,46 +19,53 @@ interface ILink {
   title: string;
   icon: string;
   href?: string;
-  aLink?:boolean
+  aLink?: boolean;
 }
 
 export const DashOtherLinks = ({ ...data }: ILink & { soon?: boolean }) => {
-  const { title, soon = false, icon: Icon , aLink=true} = data;
+  const { title, soon = false, icon: Icon, aLink = true } = data;
   return (
     <>
-    {
-      aLink ? <>    <Link href={data.href ?? '/'}>
-      <div className="flex justify-between mb-6">
-        <div className="flex">
-          {/* @ts-ignore */}
-          <Icon className="mr-2" />
-          <span className="text-safekeep-gray-200 font-bold font-dmSans" >{title}</span>
-        </div>
-        {!!soon && (
-          <div>
-            <span className="p-1 px-2 text-xs border rounded-full text-safe-green-700 border-safe-green-700">SOON</span>
+      {aLink ? (
+        <>
+          {' '}
+          <Link href={data.href ?? '/'}>
+            <div className="flex justify-between mb-6">
+              <div className="flex">
+                {/* @ts-ignore */}
+                <Icon className="mr-2" />
+                <span className="text-safekeep-gray-200 font-bold font-dmSans">{title}</span>
+              </div>
+              {!!soon && (
+                <div>
+                  <span className="p-1 px-2 text-xs border rounded-full text-safe-green-700 border-safe-green-700">
+                    SOON
+                  </span>
+                </div>
+              )}
+            </div>
+          </Link>
+        </>
+      ) : (
+        <>
+          {' '}
+          <div className="flex justify-between mb-6">
+            <div className="flex">
+              {/* @ts-ignore */}
+              <Icon className="mr-2" />
+              <span className="text-safekeep-gray-200 font-bold font-dmSans">{title}</span>
+            </div>
+            {!!soon && (
+              <div>
+                <span className="p-1 px-2 text-xs border rounded-full text-safe-green-700 border-safe-green-700">
+                  SOON
+                </span>
+              </div>
+            )}
           </div>
-        )}
-      </div>
-    </Link></> :<>  <div className="flex justify-between mb-6">
-        <div className="flex">
-          {/* @ts-ignore */}
-          <Icon className="mr-2" />
-          <span className="text-safekeep-gray-200 font-bold font-dmSans" >{title}</span>
-        </div>
-        {!!soon && (
-          <div>
-            <span className="p-1 px-2 text-xs border rounded-full text-safe-green-700 border-safe-green-700">SOON</span>
-          </div>
-        )}
-      </div>
-    
-    
+        </>
+      )}
     </>
-    }
- 
-    </>
-
   );
 };
 const NavLink = ({ ...data }: ILink) => {
@@ -105,7 +112,7 @@ const DashboardLayout = ({ children }: IChild) => {
     setSidebarOpen((state) => !state);
   };
   const { pathname } = useRouter();
-  
+
   return (
     <>
       <div className="relative grid-cols-12 lg:grid ">
@@ -134,15 +141,9 @@ const DashboardLayout = ({ children }: IChild) => {
           </div>
 
           <div className="mt-10">
-            <DashOtherLinks href="/dashboard/settings" id={0} title="Settings" icon={Settings} />         
+            <DashOtherLinks href="/dashboard/settings" id={0} title="Settings" icon={Settings} />
             <SupportDropdownMenu />
             <DashOtherLinks href={pathname} id={2} title="Logout" icon={Logout} />
-
-            {/* {Dashfooter.map(item => (
-              <div key={item.id}>               
-                <DashOtherLinks {...item} />
-              </div>
-            ))} */}
           </div>
 
           <div>

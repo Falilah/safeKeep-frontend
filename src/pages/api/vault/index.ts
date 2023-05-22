@@ -49,17 +49,20 @@ router.post(async (req, res) => {
       ...data,
     });
     await created.save();
-    // const userUpdates = await userDb?.findOneAndUpdate({
-    //   address:tokenData?.address?.toLocaleLowerCase()
-    // }, {
-    //   $push:{
-    //     vaults:{
-    //       _id:created._doc._id,
-    //       vaultName: vaultName.toLowerCase(),
-    //       vaultAddress: vaultAddress.toLowerCase(),
-    //     },
-    //   }
-    // })
+    const userUpdates = await userDb?.findOneAndUpdate(
+      {
+        address: tokenData?.address?.toLocaleLowerCase(),
+      },
+      {
+        $push: {
+          vaults: {
+            _id: created._doc._id,
+            vaultName: vaultName.toLowerCase(),
+            vaultAddress: vaultAddress.toLowerCase(),
+          },
+        },
+      }
+    );
 
     return res.status(200).json({
       status: true,
@@ -82,6 +85,7 @@ router.get(async (req, res) => {
       status: false,
     });
   }
+  console.log(token, 'token~!!!');
   try {
     const vaults = await vaultDb.find({ owner: token.address });
     return res.status(200).json({
